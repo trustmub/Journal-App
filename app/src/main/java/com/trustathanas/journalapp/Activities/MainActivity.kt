@@ -34,9 +34,6 @@ class MainActivity : AppCompatActivity() {
 
         journalViewModel.insertJournalEntry(journalEntry)
 
-//        val model = ViewModelProviders.of(this).get(JournalViewModel::class.java)
-//        model.insertJournalEntry(journalEntry)
-
     }
 
 
