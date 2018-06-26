@@ -25,3 +25,4 @@ class JournalRepository(private val journalDao: JournalDao, private val executor
     }
 
 }
+

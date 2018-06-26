@@ -6,8 +6,8 @@ import com.trustathanas.journalapp.Rooms.JournalDao
 import com.trustathanas.journalapp.Rooms.JournalEntity
 
 
-@Database(entities = arrayOf(JournalEntity::class), version = 1, exportSchema = true)
-open abstract class AppDatabase: RoomDatabase() {
+@Database(entities = arrayOf(JournalEntity::class), version = 1, exportSchema = false)
+abstract class AppDatabase: RoomDatabase() {
     /** Dao functions */
     abstract fun journalDao(): JournalDao
 }

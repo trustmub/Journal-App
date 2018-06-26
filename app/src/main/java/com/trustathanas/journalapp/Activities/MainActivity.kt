@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
             getNewJournal()
             et_journal_title.text.clear()
             et_journal_content.text.clear()
-            Toast.makeText(this, "Note Added", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, journalViewModel.getJournalList().toString(), Toast.LENGTH_LONG).show()
         }
 
     }
@@ -33,6 +33,7 @@ class MainActivity : AppCompatActivity() {
         val journalEntry = JournalEntity(title = title, contents = content)
 
         journalViewModel.insertJournalEntry(journalEntry)
+        journalViewModel.getJournalList()
 
     }
 

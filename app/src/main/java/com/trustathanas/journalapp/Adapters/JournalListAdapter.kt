@@ -12,9 +12,6 @@ import com.trustathanas.journalapp.Rooms.JournalEntity
 
 class JournalListAdapter(val context: Context, private val journalList: List<JournalEntity>) : RecyclerView.Adapter<JournalListAdapter.JournalVewHolder>() {
 
-    override fun onBindViewHolder(holder: JournalVewHolder, position: Int) {
-        holder.bindJournal(journalList[position])
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): JournalVewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.journal_list_item_layout, parent, false)
@@ -23,6 +20,10 @@ class JournalListAdapter(val context: Context, private val journalList: List<Jou
 
     override fun getItemCount(): Int {
         return journalList.count()
+    }
+
+    override fun onBindViewHolder(holder: JournalVewHolder, position: Int) {
+        holder.bindJournal(journalList[position])
     }
 
     inner class JournalVewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
