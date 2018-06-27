@@ -16,7 +16,6 @@ import org.koin.android.ext.android.inject
 class HomeActivity : AppCompatActivity() {
 
     private val journalViewModel by inject<JournalViewModel>()
-    private val journalViewModels by inject<LiveData<JournalViewModel>>()
     private lateinit var adapter: JournalListAdapter
     private lateinit var layoutManager: LinearLayoutManager
 
