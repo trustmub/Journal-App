@@ -61,9 +61,9 @@ class LoginActivity : AppCompatActivity() {
         print("google account is  ${account}")
 
         account?.let {
-            print("the result is ${it.displayName}")
+            print("the result is ${it.email}")
             val intent = Intent(this, HomeActivity::class.java)
-            intent.putExtra(GOOGLE_DISPLAY, it.displayName)
+            intent.putExtra(GOOGLE_DISPLAY, it.email)
             startActivity(intent)
         }
 
