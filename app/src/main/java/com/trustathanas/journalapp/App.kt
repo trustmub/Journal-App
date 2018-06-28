@@ -1,9 +1,12 @@
 package com.trustathanas.journalapp
 
 import android.app.Application
+import android.app.SharedElementCallback
 import android.arch.persistence.room.Room
+import android.content.SharedPreferences
 import com.trustathanas.journalapp.Repositories.JournalRepository
 import com.trustathanas.journalapp.Utilities.AppDatabase
+import com.trustathanas.journalapp.Utilities.SharedPrefs
 import com.trustathanas.journalapp.ViewModel.JournalViewModel
 import org.koin.android.architecture.ext.viewModel
 import org.koin.android.ext.android.startKoin
@@ -13,16 +16,20 @@ import java.util.concurrent.Executors
 
 class App : Application() {
 
+
+    companion object {
+        lateinit var preferences: SharedPrefs
+    }
+
     override fun onCreate() {
         super.onCreate()
-
+        preferences = SharedPrefs(applicationContext)
         startKoin(this, listOf(getGeneralModule(), getDatabaseModule(), getRepositoryModule(), getViewModelModules(), getLibrariesModule()))
     }
 
     open fun getGeneralModule() = applicationContext {
         provide(name = "context") { applicationContext }
     }
-
 
     /** We are using the Room Object Relational mapper for android
      *  Which takes context as an argument
@@ -42,7 +49,6 @@ class App : Application() {
     open fun getViewModelModules(): Module = applicationContext {
         viewModel { JournalViewModel(get()) }
     }
-
 
     /**
      * get all other libraries that are that need to be injected

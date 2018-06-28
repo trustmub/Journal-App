@@ -6,11 +6,14 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
+import android.view.Menu
 import com.trustathanas.journalapp.Adapters.JournalListAdapter
+import com.trustathanas.journalapp.App
 import com.trustathanas.journalapp.R
 import com.trustathanas.journalapp.Utilities.EXTRA_JOURNAL_DETAILS
 import com.trustathanas.journalapp.Utilities.GOOGLE_DISPLAY
 import com.trustathanas.journalapp.ViewModel.JournalViewModel
+import com.trustathanas.journalapp.models.LoginCredentialParcelable
 import kotlinx.android.synthetic.main.activity_home.*
 import org.koin.android.ext.android.inject
 
@@ -24,9 +27,11 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        val userDetails = intent.getStringExtra(GOOGLE_DISPLAY)
+        setSupportActionBar(findViewById(R.id.home_toolbar))
 
-        tv_display_name.text = userDetails
+        val userDetails = intent.getParcelableExtra<LoginCredentialParcelable>(GOOGLE_DISPLAY)
+
+        tv_display_name.text = App.preferences.displayName
 
         layoutManager = LinearLayoutManager(this)
 
@@ -34,10 +39,36 @@ class HomeActivity : AppCompatActivity() {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
-
         getJournalFromDatabase()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.home_activity_menu, menu)
 
 
+        val exitItem = menu?.findItem(R.id.action_exit)
+        val exitView = exitItem?.actionView
+        exitView?.setOnClickListener {
+            // clear all the chared preferences
+            App.preferences.let {
+                it.displayName = ""
+                it.familyName = ""
+                it.userEmail = ""
+                it.isLoggedIn = false
+
+                val intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
+            }
+        }
+
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    /**
+     * prevent back button pressed to go back to login activity
+     * */
+    override fun onBackPressed() {
+        return
     }
 
     override fun onResume() {

@@ -16,6 +16,9 @@ class JournalDetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_journal_details)
 
+        setSupportActionBar(findViewById(R.id.detail_toolbar))
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
 
         val passedJournalDetails = intent.getStringExtra(EXTRA_JOURNAL_DETAILS)
 

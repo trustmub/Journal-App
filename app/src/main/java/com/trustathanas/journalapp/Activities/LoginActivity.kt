@@ -1,18 +1,21 @@
 package com.trustathanas.journalapp.Activities
 
-import android.support.v7.app.AppCompatActivity
-import android.os.Bundle
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.trustathanas.journalapp.R
-import kotlinx.android.synthetic.main.activity_login.*
 import android.content.Intent
-import com.trustathanas.journalapp.Utilities.RC_SIGN_IN
-import com.google.android.gms.common.api.ApiException
+import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import android.widget.Toast
+import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
+import com.trustathanas.journalapp.App
+import com.trustathanas.journalapp.R
 import com.trustathanas.journalapp.Utilities.GOOGLE_DISPLAY
+import com.trustathanas.journalapp.Utilities.RC_SIGN_IN
+import com.trustathanas.journalapp.models.LoginCredentialParcelable
+import kotlinx.android.synthetic.main.activity_login.*
 
 
 class LoginActivity : AppCompatActivity() {
@@ -30,12 +33,17 @@ class LoginActivity : AppCompatActivity() {
             startActivityForResult(signInIntent, RC_SIGN_IN)
         }
 
+        if (App.preferences.isLoggedIn){
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        print("response code ${requestCode}")
-        if (requestCode == RC_SIGN_IN) {
+
+        if (requestCode == RC_SIGN_IN && !App.preferences.isLoggedIn) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             handleSignInResult(task)
         }
@@ -47,6 +55,12 @@ class LoginActivity : AppCompatActivity() {
             val account = completedTask.getResult(ApiException::class.java)
 
             // Signed in successfully, show authenticated UI.
+            App.preferences.let {
+                it.isLoggedIn = true
+                it.displayName = account.displayName.toString()
+                it.familyName = account.familyName.toString()
+                it.userEmail = account.email.toString()
+            }
             updateUI(account)
         } catch (e: ApiException) {
             // The ApiException status code indicates the detailed failure reason.
@@ -60,11 +74,15 @@ class LoginActivity : AppCompatActivity() {
     private fun updateUI(account: GoogleSignInAccount?) {
         print("google account is  ${account}")
 
-        account?.let {
-            print("the result is ${it.email}")
-            val intent = Intent(this, HomeActivity::class.java)
-            intent.putExtra(GOOGLE_DISPLAY, it.email)
-            startActivity(intent)
+        if (account != null) {
+            print("the result is ${account.familyName}")
+            account.let {
+                val intent = Intent(this, HomeActivity::class.java)
+                intent.putExtra(GOOGLE_DISPLAY, LoginCredentialParcelable(it.displayName.toString(), it.email.toString(), it.familyName.toString()))
+                startActivity(intent)
+            }
+        } else {
+            Toast.makeText(this, "Login failed.", Toast.LENGTH_SHORT).show()
         }
 
     }
