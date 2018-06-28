@@ -19,6 +19,7 @@ interface JournalDao {
     @Query("SELECT * FROM journal_entries ")
     fun getJournals(): List<JournalEntity>
 
+
     /** This will delete that particular Journal record passed on the
      * function as an argument
      */
