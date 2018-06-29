@@ -20,13 +20,14 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/login_cover" />
 
-    <com.google.android.gms.common.SignInButton
+    <com.shobhitpuri.custombuttons.GoogleSignInButton
         android:id="@+id/sign_in_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="192dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="32dp"
+        app:isDarkTheme="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -35,16 +36,31 @@
     <TextView
         android:id="@+id/tv_app_name_lanel"
         android:layout_width="wrap_content"
-        android:layout_height="49dp"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="96dp"
-        android:text="Journal App"
-        android:textColor="@color/colorWhite"
+        android:text="@string/journal_app_label"
         android:textAlignment="center"
+        android:textColor="@color/colorWhite"
         android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="40dp"
+        android:layout_marginStart="40dp"
+        android:fontFamily="sans-serif"
+        android:text="For all those great ideas and thoughts, keep them safe on this app."
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_app_name_lanel" />
 
 </android.support.constraint.ConstraintLayout>

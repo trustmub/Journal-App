@@ -1,8 +1,10 @@
 package com.trustathanas.journalapp.Activities
 
 import android.arch.lifecycle.Observer
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import com.trustathanas.journalapp.R
 import com.trustathanas.journalapp.Utilities.EXTRA_JOURNAL_DETAILS
 import com.trustathanas.journalapp.ViewModel.JournalViewModel
@@ -32,8 +34,10 @@ class JournalDetailsActivity : AppCompatActivity() {
                 }
             })
         }
-
     }
 
+    fun cancelButtonClicked(view: View){
+        startActivity(Intent(this, HomeActivity::class.java))
+    }
 
 }

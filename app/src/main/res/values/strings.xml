@@ -3,4 +3,6 @@
     <string name="save">Save</string>
     <string name="et_hint_title">Title</string>
     <string name="et_hint_content">Content</string>
+    <string name="journal_app_label">Journal App</string>
+    <string name="log_out">Log Out</string>
 </resources>

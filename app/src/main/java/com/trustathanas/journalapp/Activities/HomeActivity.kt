@@ -29,9 +29,11 @@ class HomeActivity : AppCompatActivity() {
 
         setSupportActionBar(findViewById(R.id.home_toolbar))
 
+
         val userDetails = intent.getParcelableExtra<LoginCredentialParcelable>(GOOGLE_DISPLAY)
 
-        tv_display_name.text = App.preferences.displayName
+        tv_display_name.text = App.preferences.userEmail
+        home_toolbar.title  = "${App.preferences.displayName}'s Journal"
 
         layoutManager = LinearLayoutManager(this)
 

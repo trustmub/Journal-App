@@ -14,7 +14,8 @@
         android:elevation="4dp"
         app:titleTextColor="@color/colorWhite"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:title="Journal List">
 
 
     </android.support.v7.widget.Toolbar>

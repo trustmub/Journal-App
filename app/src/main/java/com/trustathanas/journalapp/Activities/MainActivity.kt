@@ -1,7 +1,9 @@
 package com.trustathanas.journalapp.Activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.View
 import android.widget.Toast
 import com.trustathanas.journalapp.R
 import com.trustathanas.journalapp.Rooms.JournalEntity
@@ -17,23 +19,20 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        btn_save.setOnClickListener {
-            getNewJournal()
-            et_journal_title.text.clear()
-            et_journal_content.text.clear()
-            Toast.makeText(this, journalViewModel.getJournalList().toString(), Toast.LENGTH_LONG).show()
-        }
-
     }
 
-    private fun getNewJournal() {
+    fun saveJournalButtonClicked(view: View) {
         val title = et_journal_title.text.toString()
         val content = et_journal_content.text.toString()
-        val journalEntry = JournalEntity(title = title, contents = content)
+        if (title != "" || content != "") {
+            val journalEntry = JournalEntity(title = title, contents = content)
+            journalViewModel.insertJournalEntry(journalEntry)
+            journalViewModel.getJournalList()
+            startActivity(Intent(this, HomeActivity::class.java))
 
-        journalViewModel.insertJournalEntry(journalEntry)
-        journalViewModel.getJournalList()
+        } else {
+            Toast.makeText(this, "Cannot save empty Journal Item", Toast.LENGTH_SHORT).show()
+        }
 
     }
 

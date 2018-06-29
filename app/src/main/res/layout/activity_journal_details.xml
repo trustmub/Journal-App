@@ -14,7 +14,8 @@
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:titleTextColor="@color/colorWhite"/>
+        app:titleTextColor="@color/colorWhite"
+        app:title="Detail View"/>
 
     <Button
         android:id="@+id/btn_cancel_details"
@@ -24,6 +25,7 @@
         android:layout_marginEnd="56dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/button_style"
+        android:onClick="cancelButtonClicked"
         android:text="Cancel"
         app:layout_constraintBottom_toBottomOf="@+id/btn_edit_contents"
         app:layout_constraintEnd_toStartOf="@+id/btn_edit_contents"
