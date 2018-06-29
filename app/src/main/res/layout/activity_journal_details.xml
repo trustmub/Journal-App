@@ -17,7 +17,7 @@
         app:titleTextColor="@color/colorWhite"/>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_cancel_details"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -25,13 +25,13 @@
         android:layout_marginTop="8dp"
         android:background="@drawable/button_style"
         android:text="Cancel"
-        app:layout_constraintBottom_toBottomOf="@+id/button2"
-        app:layout_constraintEnd_toStartOf="@+id/button2"
-        app:layout_constraintTop_toTopOf="@+id/button2"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_edit_contents"
+        app:layout_constraintEnd_toStartOf="@+id/btn_edit_contents"
+        app:layout_constraintTop_toTopOf="@+id/btn_edit_contents"
         app:layout_constraintVertical_bias="1.0" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btn_edit_contents"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
