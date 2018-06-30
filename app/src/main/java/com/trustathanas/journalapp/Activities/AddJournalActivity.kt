@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.ext.android.inject
 
 
-class MainActivity : AppCompatActivity() {
+class AddJournalActivity : AppCompatActivity() {
 
     private val journalViewModel by inject<JournalViewModel>()
 

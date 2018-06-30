@@ -3,9 +3,9 @@ package com.trustathanas.journalapp.Activities
 import android.arch.lifecycle.Observer
 import android.content.Intent
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
-import android.util.Log
 import android.view.Menu
 import com.trustathanas.journalapp.Adapters.JournalListAdapter
 import com.trustathanas.journalapp.App
@@ -16,6 +16,7 @@ import com.trustathanas.journalapp.ViewModel.JournalViewModel
 import com.trustathanas.journalapp.models.LoginCredentialParcelable
 import kotlinx.android.synthetic.main.activity_home.*
 import org.koin.android.ext.android.inject
+import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt
 
 class HomeActivity : AppCompatActivity() {
 
@@ -29,6 +30,7 @@ class HomeActivity : AppCompatActivity() {
 
         setSupportActionBar(findViewById(R.id.home_toolbar))
 
+        showFabPrompt()
 
         val userDetails = intent.getParcelableExtra<LoginCredentialParcelable>(GOOGLE_DISPLAY)
 
@@ -38,7 +40,7 @@ class HomeActivity : AppCompatActivity() {
         layoutManager = LinearLayoutManager(this)
 
         fab_add.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, AddJournalActivity::class.java)
             startActivity(intent)
         }
         getJournalFromDatabase()
@@ -86,10 +88,6 @@ class HomeActivity : AppCompatActivity() {
                         detailsIntent.putExtra(EXTRA_JOURNAL_DETAILS, it.id.toString())
                         startActivity(detailsIntent)
                     }
-
-                    print("the number of records is ${it.count()}")
-                    Log.d("Home", "Count is =: ${it.count()}")
-
                     rv_journal_list.let {
                         it.adapter = adapter
                         it.layoutManager = layoutManager
@@ -97,5 +95,28 @@ class HomeActivity : AppCompatActivity() {
                     }
                 })
 
+    }
+
+    /**
+     * tutorial on the
+     */
+    private fun showFabPrompt() {
+        val prefManager = PreferenceManager.getDefaultSharedPreferences(this)
+        if (!prefManager.getBoolean("didShowPrompt", false)) {
+            MaterialTapTargetPrompt.Builder(this)
+                    .setTarget(fab_add)
+                    .setPrimaryText(getString(R.string.click_here))
+                    .setSecondaryText(getString(R.string.tutorial_empty_list_prompt))
+                    .setBackButtonDismissEnabled(true)
+                    .setPromptStateChangeListener { prompt, state ->
+                        if (state == MaterialTapTargetPrompt.STATE_FOCAL_PRESSED || state == MaterialTapTargetPrompt.STATE_NON_FOCAL_PRESSED) {
+                            val prefEditor = prefManager.edit()
+                            prefEditor.putBoolean("didShowPrompt", true)
+                            prefEditor.apply()
+                        }
+                    }
+                    .show()
+
+        }
     }
 }

@@ -65,17 +65,15 @@ class LoginActivity : AppCompatActivity() {
         } catch (e: ApiException) {
             // The ApiException status code indicates the detailed failure reason.
             // Please refer to the GoogleSignInStatusCodes class reference for more information.
-            Log.w(this.packageName, "signInResult:failed code=" + e.statusCode)
+            Toast.makeText(this, e.message, Toast.LENGTH_SHORT).show()
             updateUI(null)
         }
 
     }
 
     private fun updateUI(account: GoogleSignInAccount?) {
-        print("google account is  ${account}")
 
         if (account != null) {
-            print("the result is ${account.familyName}")
             account.let {
                 val intent = Intent(this, HomeActivity::class.java)
                 intent.putExtra(GOOGLE_DISPLAY, LoginCredentialParcelable(it.displayName.toString(), it.email.toString(), it.familyName.toString()))

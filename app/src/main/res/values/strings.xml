@@ -7,4 +7,6 @@
     <string name="log_out">Log Out</string>
     <string name="cancel">Cancel</string>
     <string name="edit">Edit</string>
+    <string name="tutorial_empty_list_prompt">You have an empty list, add your thoughts and ideas.</string>
+    <string name="click_here">Click here.</string>
 </resources>

@@ -36,7 +36,6 @@ class JournalDetailsActivity : AppCompatActivity() {
                 it?.filter {
                     it.id!!.toInt() == passedJournalDetails.toInt()
                 }!!.map {
-                    println(" \n the record for this is ${it.id}, ${it.title}, ${it.contents}")
                     // display the record values on the ui  on the block
                     tv_journal_details_title.text = it.title
                     tv_journal_details_content.text = it.contents
