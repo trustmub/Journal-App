@@ -2,6 +2,7 @@ package com.trustathanas.journalapp.Rooms
 
 import android.arch.lifecycle.LiveData
 import android.arch.persistence.room.*
+import com.trustathanas.journalapp.Adapters.JournalListAdapter
 
 @Dao
 interface JournalDao {
@@ -12,6 +13,8 @@ interface JournalDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertNewJournal(journal: JournalEntity) {
     }
+    @Update(onConflict = OnConflictStrategy.REPLACE)
+    fun updateJournal(journal: JournalEntity)
 
     /**This will get all the Journals in the database.
      *

@@ -33,7 +33,7 @@ class HomeActivity : AppCompatActivity() {
         val userDetails = intent.getParcelableExtra<LoginCredentialParcelable>(GOOGLE_DISPLAY)
 
         tv_display_name.text = App.preferences.userEmail
-        home_toolbar.title  = "${App.preferences.displayName}'s Journal"
+        home_toolbar.title = "${App.preferences.displayName}'s Journal"
 
         layoutManager = LinearLayoutManager(this)
 
@@ -79,7 +79,6 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun getJournalFromDatabase() {
-
         journalViewModel.getJournalList()
                 .observe(this, Observer {
                     adapter = JournalListAdapter(this, it!!) {

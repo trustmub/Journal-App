@@ -11,4 +11,6 @@ class JournalViewModel(private val repository: JournalRepository) : ViewModel() 
     fun insertJournalEntry(journal: JournalEntity) = repository.insertJournalEntry(journal)
 
     fun getJournalList(): LiveData<List<JournalEntity>> = repository.getAllJournals()
+
+    fun updateJournal(journal : JournalEntity) = repository.updateJournal(journal)
 }

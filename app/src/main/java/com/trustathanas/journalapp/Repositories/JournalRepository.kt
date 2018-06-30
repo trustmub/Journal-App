@@ -24,5 +24,12 @@ class JournalRepository(private val journalDao: JournalDao, private val executor
         }
     }
 
+    fun updateJournal(journal: JournalEntity) {
+        executorService.execute{
+            journalDao.updateJournal(journal)
+        }
+
+    }
+
 }
 

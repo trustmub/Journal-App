@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.EditJournalActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tb_edit_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        app:title="Edit Journal"
+        app:titleTextColor="@color/colorWhite">
+
+
+    </android.support.v7.widget.Toolbar>
+
+    <EditText
+        android:id="@+id/et_edit_journal_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tb_edit_toolbar"/>
+
+    <EditText
+        android:id="@+id/et_edit_journal_contents"
+        android:layout_width="0dp"
+        android:layout_height="143dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_edit_journal_title" />
+
+    <Button
+        android:id="@+id/btn_edit_journal_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/button_style"
+        android:onClick="editSaveButtonClicked"
+        android:text="@string/save"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_edit_journal_contents" />
+
+    <Button
+        android:id="@+id/btn_edit_journal_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="56dp"
+        android:background="@drawable/button_style"
+        android:onClick="editCancelButtonClicked"
+        android:text="@android:string/cancel"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_edit_journal_save"
+        app:layout_constraintEnd_toStartOf="@+id/btn_edit_journal_save"
+        app:layout_constraintTop_toTopOf="@+id/btn_edit_journal_save" />
+
+</android.support.constraint.ConstraintLayout>
