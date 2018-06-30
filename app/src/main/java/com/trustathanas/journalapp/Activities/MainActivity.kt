@@ -36,5 +36,9 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    fun addNewJournalCancelClicked(view: View){
+        onBackPressed()
+    }
+
 
 }
