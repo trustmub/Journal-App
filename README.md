@@ -5,6 +5,13 @@ This application a personal diary allowing to capture thoughts and feelings and 
 
 Import the project on into Android Studio version 3.*. After the project is fully built, run the projec on you emulator or using an android device connected on your computer. Please note the project is targeting a minimum version of 21.  
 
+The application apk is located in the following directory path:
+
+````
+~/JournalApp/app/src/main/app-release.apk
+
+````
+
 ### Libraries and tools included
 
 
@@ -27,6 +34,8 @@ Import the project on into Android Studio version 3.*. After the project is full
 
 We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
 
+
+
 ## Authors
 
 * **Trust A Mubaiwa** - *Initial work* 
@@ -39,5 +48,5 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ## Acknowledgments
 
 * Inspired by Rebbecca Frank and the Android expert team in Andela Learning Community 
-* 
+
 
