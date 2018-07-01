@@ -1,4 +1,4 @@
-package com.trustathanas.journalapp.Activities;
+package com.trustathanas.journalapp.activities;
 
 
 import android.support.test.espresso.ViewInteraction;
@@ -21,28 +21,30 @@ import org.junit.runner.RunWith;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static android.support.test.espresso.matcher.ViewMatchers.withClassName;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
+import static org.hamcrest.Matchers.is;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class LoginActivityTest {
+public class HomeActivityTest {
 
     @Rule
-    public ActivityTestRule<LoginActivity> mActivityTestRule = new ActivityTestRule<>(LoginActivity.class);
+    public ActivityTestRule<HomeActivity> mActivityTestRule = new ActivityTestRule<>(HomeActivity.class);
 
     @Test
-    public void loginActivityTest() {
-        ViewInteraction googleSignInButton = onView(
-                allOf(withId(R.id.sign_in_button), withText("Sign in with Google"),
+    public void homeActivityTest() {
+        ViewInteraction floatingActionButton = onView(
+                allOf(withId(R.id.fab_add),
                         childAtPosition(
                                 childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
+                                        withClassName(is("android.support.constraint.ConstraintLayout")),
+                                        2),
                                 1),
                         isDisplayed()));
-        googleSignInButton.perform(click());
+        floatingActionButton.perform(click());
 
     }
 

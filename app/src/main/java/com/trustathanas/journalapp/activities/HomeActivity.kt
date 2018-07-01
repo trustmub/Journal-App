@@ -1,4 +1,4 @@
-package com.trustathanas.journalapp.Activities
+package com.trustathanas.journalapp.activities
 
 import android.arch.lifecycle.Observer
 import android.content.Intent
@@ -12,10 +12,7 @@ import com.trustathanas.journalapp.Adapters.JournalListAdapter
 import com.trustathanas.journalapp.App
 import com.trustathanas.journalapp.R
 import com.trustathanas.journalapp.Utilities.EXTRA_JOURNAL_DETAILS
-import com.trustathanas.journalapp.Utilities.GOOGLE_DISPLAY
 import com.trustathanas.journalapp.ViewModel.JournalViewModel
-import com.trustathanas.journalapp.models.LoginCredentialParcelable
-import kotlinx.android.synthetic.main.activity_home.*
 import org.koin.android.ext.android.inject
 import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt
 

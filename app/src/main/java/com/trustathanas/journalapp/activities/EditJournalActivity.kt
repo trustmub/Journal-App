@@ -1,17 +1,15 @@
-package com.trustathanas.journalapp.Activities
+package com.trustathanas.journalapp.activities
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.TextView
 import android.widget.Toast
 import com.trustathanas.journalapp.R
 import com.trustathanas.journalapp.Rooms.JournalEntity
 import com.trustathanas.journalapp.Utilities.EXTRA_JOURNAL
 import com.trustathanas.journalapp.ViewModel.JournalViewModel
 import com.trustathanas.journalapp.models.Journal
-import kotlinx.android.synthetic.main.activity_edit_journal.*
 import org.koin.android.ext.android.inject
 
 class EditJournalActivity : AppCompatActivity() {

@@ -1,9 +1,8 @@
-package com.trustathanas.journalapp.Activities
+package com.trustathanas.journalapp.activities
 
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import android.widget.Toast
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
@@ -15,7 +14,6 @@ import com.trustathanas.journalapp.R
 import com.trustathanas.journalapp.Utilities.GOOGLE_DISPLAY
 import com.trustathanas.journalapp.Utilities.RC_SIGN_IN
 import com.trustathanas.journalapp.models.LoginCredentialParcelable
-import kotlinx.android.synthetic.main.activity_login.*
 
 
 class LoginActivity : AppCompatActivity() {

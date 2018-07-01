@@ -1,4 +1,4 @@
-package com.trustathanas.journalapp.Activities
+package com.trustathanas.journalapp.activities
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,7 +8,6 @@ import android.widget.Toast
 import com.trustathanas.journalapp.R
 import com.trustathanas.journalapp.Rooms.JournalEntity
 import com.trustathanas.journalapp.ViewModel.JournalViewModel
-import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.ext.android.inject
 
 

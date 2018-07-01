@@ -12,25 +12,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.AddJournalActivity" />
-        <activity android:name=".Activities.LoginActivity">
+        <activity android:name=".activities.AddJournalActivity" />
+        <activity android:name=".activities.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.HomeActivity"></activity>
+        <activity android:name=".activities.HomeActivity"></activity>
         <activity
-            android:name=".Activities.JournalDetailsActivity"
-            android:parentActivityName=".Activities.HomeActivity">
+            android:name=".activities.JournalDetailsActivity"
+            android:parentActivityName=".activities.HomeActivity">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Activities.HomeActivity" />
+                android:value=".activities.HomeActivity" />
         </activity>
-        <activity android:name=".Activities.EditJournalActivity"></activity>
+        <activity android:name=".activities.EditJournalActivity"></activity>
     </application>
 
 </manifest>
