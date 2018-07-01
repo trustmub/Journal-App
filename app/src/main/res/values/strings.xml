@@ -9,4 +9,6 @@
     <string name="edit">Edit</string>
     <string name="tutorial_empty_list_prompt">You have an empty list, add your thoughts and ideas.</string>
     <string name="click_here">Click here.</string>
+    <string name="for_all_those_great_ideas_and_thoughts_keep_them_safe_on_this_app">For all those great ideas and thoughts, keep them safe on this app.</string>
+    <string name="content_label">Content</string>
 </resources>

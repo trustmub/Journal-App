@@ -49,13 +49,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tv_login_subtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="40dp"
         android:layout_marginStart="40dp"
         android:fontFamily="sans-serif"
-        android:text="For all those great ideas and thoughts, keep them safe on this app."
+        android:text="@string/for_all_those_great_ideas_and_thoughts_keep_them_safe_on_this_app"
         android:textAlignment="center"
         android:textColor="@android:color/white"
         android:textSize="18sp"

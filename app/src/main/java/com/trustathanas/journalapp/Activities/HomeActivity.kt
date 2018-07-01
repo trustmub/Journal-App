@@ -7,6 +7,7 @@ import android.preference.PreferenceManager
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.view.Menu
+import android.widget.Toast
 import com.trustathanas.journalapp.Adapters.JournalListAdapter
 import com.trustathanas.journalapp.App
 import com.trustathanas.journalapp.R
@@ -23,6 +24,8 @@ class HomeActivity : AppCompatActivity() {
     private val journalViewModel by inject<JournalViewModel>()
     private lateinit var adapter: JournalListAdapter
     private lateinit var layoutManager: LinearLayoutManager
+    private var counter = 0
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,9 +33,9 @@ class HomeActivity : AppCompatActivity() {
 
         setSupportActionBar(findViewById(R.id.home_toolbar))
 
+        //Tutorial for the UI elements on the HomeActivity
         showFabPrompt()
 
-        val userDetails = intent.getParcelableExtra<LoginCredentialParcelable>(GOOGLE_DISPLAY)
 
         tv_display_name.text = App.preferences.userEmail
         home_toolbar.title = "${App.preferences.displayName}'s Journal"
@@ -53,7 +56,7 @@ class HomeActivity : AppCompatActivity() {
         val exitItem = menu?.findItem(R.id.action_exit)
         val exitView = exitItem?.actionView
         exitView?.setOnClickListener {
-            // clear all the chared preferences
+            // clear all the shared preferences on logout
             App.preferences.let {
                 it.displayName = ""
                 it.familyName = ""
@@ -64,7 +67,6 @@ class HomeActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         }
-
         return super.onCreateOptionsMenu(menu)
     }
 
@@ -72,14 +74,25 @@ class HomeActivity : AppCompatActivity() {
      * prevent back button pressed to go back to login activity
      * */
     override fun onBackPressed() {
-        return
+        counter++
+        when (counter) {
+            1 -> Toast.makeText(this, "Press back again to close.", Toast.LENGTH_SHORT).show()
+            2 -> finishAffinity()
+        }
+
     }
 
     override fun onResume() {
         super.onResume()
         getJournalFromDatabase()
+
+        counter = 0
     }
 
+    /**
+     * this method retrieves the data from the database and present it to the adapter for
+     * display on the recycler view.
+     */
     private fun getJournalFromDatabase() {
         journalViewModel.getJournalList()
                 .observe(this, Observer {
@@ -98,7 +111,8 @@ class HomeActivity : AppCompatActivity() {
     }
 
     /**
-     * tutorial on the
+     * tutorial on the HomeActivities fab UI whci will only show on the first time of user
+     * activity on the app
      */
     private fun showFabPrompt() {
         val prefManager = PreferenceManager.getDefaultSharedPreferences(this)
