@@ -20,7 +20,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.HomeActivity"></activity>
+        <activity android:name=".activities.HomeActivity"/>
         <activity
             android:name=".activities.JournalDetailsActivity"
             android:parentActivityName=".activities.HomeActivity">
@@ -30,7 +30,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.HomeActivity" />
         </activity>
-        <activity android:name=".activities.EditJournalActivity"></activity>
+        <activity android:name=".activities.EditJournalActivity"/>
     </application>
 
 </manifest>

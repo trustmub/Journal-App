@@ -11,6 +11,7 @@ import com.trustathanas.journalapp.Utilities.EXTRA_JOURNAL
 import com.trustathanas.journalapp.Utilities.EXTRA_JOURNAL_DETAILS
 import com.trustathanas.journalapp.ViewModel.JournalViewModel
 import com.trustathanas.journalapp.models.Journal
+import kotlinx.android.synthetic.main.activity_journal_details.*
 import org.koin.android.ext.android.inject
 
 class JournalDetailsActivity : AppCompatActivity() {

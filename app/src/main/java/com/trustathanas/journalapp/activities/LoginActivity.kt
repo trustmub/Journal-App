@@ -14,6 +14,7 @@ import com.trustathanas.journalapp.R
 import com.trustathanas.journalapp.Utilities.GOOGLE_DISPLAY
 import com.trustathanas.journalapp.Utilities.RC_SIGN_IN
 import com.trustathanas.journalapp.models.LoginCredentialParcelable
+import kotlinx.android.synthetic.main.activity_login.*
 
 
 class LoginActivity : AppCompatActivity() {

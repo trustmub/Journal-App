@@ -13,6 +13,7 @@ import com.trustathanas.journalapp.App
 import com.trustathanas.journalapp.R
 import com.trustathanas.journalapp.Utilities.EXTRA_JOURNAL_DETAILS
 import com.trustathanas.journalapp.ViewModel.JournalViewModel
+import kotlinx.android.synthetic.main.activity_home.*
 import org.koin.android.ext.android.inject
 import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt
 

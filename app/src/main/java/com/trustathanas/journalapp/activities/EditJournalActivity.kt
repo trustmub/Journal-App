@@ -10,6 +10,7 @@ import com.trustathanas.journalapp.Rooms.JournalEntity
 import com.trustathanas.journalapp.Utilities.EXTRA_JOURNAL
 import com.trustathanas.journalapp.ViewModel.JournalViewModel
 import com.trustathanas.journalapp.models.Journal
+import kotlinx.android.synthetic.main.activity_edit_journal.*
 import org.koin.android.ext.android.inject
 
 class EditJournalActivity : AppCompatActivity() {
