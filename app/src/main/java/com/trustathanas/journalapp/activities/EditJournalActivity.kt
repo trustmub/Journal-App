@@ -1,5 +1,6 @@
 package com.trustathanas.journalapp.activities
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -19,6 +20,7 @@ class EditJournalActivity : AppCompatActivity() {
     private lateinit var updateRecord: JournalEntity
     private var recordId = 0
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_journal)
@@ -36,9 +38,15 @@ class EditJournalActivity : AppCompatActivity() {
     fun editSaveButtonClicked(view: View) {
         updateRecord = JournalEntity(recordId, et_edit_journal_title.text.toString(), et_edit_journal_contents.text.toString())
 
-        journalViewModel.updateJournal(updateRecord)
-        Toast.makeText(this, "Record Added to Database", Toast.LENGTH_SHORT).show()
-        startActivity(Intent(this, HomeActivity::class.java))
+
+        DialogUtil.createAlertDialogWithOneButton(this, "Editing Note Alert",
+                "Are you sure you want to edit Note?",
+                "OK", DialogInterface.OnClickListener { dialog, _ ->
+//            Toast.makeText(this, "Record Added to Database", Toast.LENGTH_SHORT).show()
+            journalViewModel.updateJournal(updateRecord)
+            startActivity(Intent(this, HomeActivity::class.java))
+            dialog.dismiss()
+        }).show()
     }
 
     fun editCancelButtonClicked(view: View) {

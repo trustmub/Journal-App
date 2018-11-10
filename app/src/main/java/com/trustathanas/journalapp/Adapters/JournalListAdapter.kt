@@ -29,10 +29,27 @@ class JournalListAdapter(private val context: Context, private val journalList: 
     inner class JournalVewHolder(itemView: View?, itemClick: (JournalEntity) -> Unit) : RecyclerView.ViewHolder(itemView) {
         private val journalTitle = itemView?.findViewById<TextView>(R.id.tv_title)
         private val journalContent = itemView?.findViewById<TextView>(R.id.tv_content)
+        private val journalDate = itemView?.findViewById<TextView>(R.id.tv_list_posting_date)
+        private val titleTag = itemView?.findViewById<TextView>(R.id.tv_tag)
+
+        private fun getFirstLetter(title: String): String {
+            return title[0].toString().toUpperCase()
+        }
+
+        private fun formatedDate(date: String): String {
+            val dateLength = date.length
+            val year = date.subSequence(dateLength - 4, dateLength)
+            return "${date.subSequence(0, 16)} $year"
+        }
 
         fun bindJournal(journal: JournalEntity, context: Context) {
-            journalTitle?.text = journal.title
+
+            journalTitle?.text = journal.title.toUpperCase()
             journalContent?.text = journal.contents
+            journalDate?.text = formatedDate(journal.date.toString())
+
+
+            titleTag?.text = getFirstLetter(journal.title)
             /** set on click listenr on the item */
             itemView.setOnClickListener { itemClick(journal) }
 

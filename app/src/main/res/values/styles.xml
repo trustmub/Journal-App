@@ -8,4 +8,20 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppTheme_Dialog" parent="Theme.AppCompat.Light.Dialog.Alert" >
+
+    </style>
+
+    <style name="button_halo">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:background">@drawable/button_halo</item>
+    </style>
+
+    <style name="button_filled">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:background">@drawable/button_filled</item>
+    </style>
+
 </resources>
