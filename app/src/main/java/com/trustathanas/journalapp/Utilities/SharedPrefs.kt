@@ -5,14 +5,14 @@ import android.content.SharedPreferences
 
 class SharedPrefs(context: Context) {
 
-    val PREFERENCE_FILENAME = "preferences"
-    val prefs = context.getSharedPreferences(PREFERENCE_FILENAME, Context.MODE_PRIVATE)
+    private val PREFERENCE_FILENAME = "preferences"
+    private val prefs = context.getSharedPreferences(PREFERENCE_FILENAME, Context.MODE_PRIVATE)
 
-    val IS_LOGGED_IN = "isLoggedIn"
-    val USER_DISPLAYNAME = "displayName"
-    val USER_FAMILYNAME = "familyName"
-    val USER_EMAIL = "email"
-    val DID_SHOW_PROMPT = "didShowPrompt"
+    private val IS_LOGGED_IN = "isLoggedIn"
+    private val USER_DISPLAYNAME = "displayName"
+    private val USER_FAMILYNAME = "familyName"
+    private val USER_EMAIL = "email"
+    private val DID_SHOW_PROMPT = "didShowPrompt"
     private val TERMS_AND_CONDITIONS = "accepted_terms_of_service"
 
 

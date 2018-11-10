@@ -6,7 +6,7 @@ import com.trustathanas.journalapp.App
 import com.trustathanas.journalapp.R
 
 /**
- * Sample utility class wrapping all the functionality of the Dialog class
+ * A utility class wrapping all the functionality of the Dialog class
  * this provides a way to manage the theme of the dialog in one place as well
  * as all the types of dialogs you choose to display in the application.
  * <p>

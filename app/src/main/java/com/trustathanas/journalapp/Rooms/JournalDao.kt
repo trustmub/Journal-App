@@ -1,31 +1,50 @@
 package com.trustathanas.journalapp.Rooms
 
-import android.arch.lifecycle.LiveData
 import android.arch.persistence.room.*
-import com.trustathanas.journalapp.Adapters.JournalListAdapter
+
+/**
+ *  An interface for accessing the SQLite database using Room libraries @Dao annotation
+ *
+ */
+
+
 
 @Dao
 interface JournalDao {
 
-    /**This will create a new Journal Entry.
+    /**
+     * method for inserting new record in the database
      *
-     * */
+     * @param journal   JournalEntity object
+     * @return Unit
+     */
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertNewJournal(journal: JournalEntity) {
     }
+
+    /**
+     * method for updating specific record in the database
+     *
+     * @param journal   JournalEntity
+     * @return Unit
+     */
     @Update(onConflict = OnConflictStrategy.REPLACE)
     fun updateJournal(journal: JournalEntity)
 
-    /**This will get all the Journals in the database.
+    /**
+     * method for retrieving all journal records in the database
      *
-     * */
+     * @return List<JournalEntity>
+     */
     @Query("SELECT * FROM journal_entries ")
     fun getJournals(): List<JournalEntity>
 
-
-    /** This will delete that particular Journal record passed on the
-     * function as an argument
+    /**
+     * method for deleting a specific record in the database
+     *
+     * @param journal   JournalEntity
+     * @return Unit
      */
     @Delete
-    fun deleteJournal(user: JournalEntity)
+    fun deleteJournal(journal: JournalEntity)
 }

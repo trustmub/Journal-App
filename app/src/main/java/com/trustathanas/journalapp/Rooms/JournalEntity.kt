@@ -5,6 +5,14 @@ import android.arch.persistence.room.Entity
 import android.arch.persistence.room.PrimaryKey
 import java.util.*
 
+/**
+ *<p>
+ * A data class annotated with {@code @Entity} for the Room database to generate a table of a specified name
+ * data class for the journal_entries table on the database
+ *
+ *
+ *
+ */
 @Entity(tableName = "journal_entries")
 data class JournalEntity(
         @PrimaryKey(autoGenerate = true)

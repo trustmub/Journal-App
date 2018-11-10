@@ -11,6 +11,10 @@ import com.trustathanas.journalapp.Rooms.JournalEntity
 @Database(entities = arrayOf(JournalEntity::class), version = 1, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
-    /** Dao functions */
+    /**
+     * abstract method for the Data Access Object interface for the journals
+     *
+     * @return JournalDao
+     */
     abstract fun journalDao(): JournalDao
 }

@@ -27,33 +27,46 @@ class App : Application() {
         startKoin(this, listOf(getGeneralModule(), getDatabaseModule(), getRepositoryModule(), getViewModelModules(), getLibrariesModule()))
     }
 
-    open fun getGeneralModule() = applicationContext {
+    private fun getGeneralModule(): Module = applicationContext {
         provide(name = "context") { applicationContext }
     }
 
     /** We are using the Room Object Relational mapper for android
      *  Which takes context as an argument
      *  Note: change the name of the database relevant to your app
+     *
+     *
+     *  @return Module
      */
-    open fun getDatabaseModule(): Module = applicationContext {
+    private fun getDatabaseModule(): Module = applicationContext {
         provide(isSingleton = true) { Room.databaseBuilder(get("context"), AppDatabase::class.java, "journal_database_db").build() }
         provide(isSingleton = false) { get<AppDatabase>().journalDao() }
     }
 
-    /** for all you repositories that you need to inject */
-    open fun getRepositoryModule(): Module = applicationContext {
+    /**
+     * for all you repositories that you need to inject
+     *
+     * @return Module
+     */
+    private fun getRepositoryModule(): Module = applicationContext {
         provide { JournalRepository(get(), get()) }
     }
 
-    /** for all your view models that you will need to inject */
-    open fun getViewModelModules(): Module = applicationContext {
+    /**
+     * for all your view models that you will need to inject
+     *
+     * @return Module
+     */
+    private fun getViewModelModules(): Module = applicationContext {
         viewModel { JournalViewModel(get()) }
     }
 
     /**
      * get all other libraries that are that need to be injected
+     *
+     * @return Module
      */
-    open fun getLibrariesModule(): Module = applicationContext {
+    private fun getLibrariesModule(): Module = applicationContext {
         provide(isSingleton = true) { Executors.newCachedThreadPool() }
     }
 
