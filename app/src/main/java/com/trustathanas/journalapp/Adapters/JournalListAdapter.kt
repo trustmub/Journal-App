@@ -26,7 +26,7 @@ class JournalListAdapter(private val context: Context, private val journalList: 
         holder.bindJournal(journalList[position], context)
     }
 
-    inner class JournalVewHolder(itemView: View?, itemClick: (JournalEntity) -> Unit) : RecyclerView.ViewHolder(itemView) {
+    inner class JournalVewHolder(itemView: View?, itemClick: (JournalEntity) -> Unit) : RecyclerView.ViewHolder(itemView!!) {
         private val journalTitle = itemView?.findViewById<TextView>(R.id.tv_title)
         private val journalContent = itemView?.findViewById<TextView>(R.id.tv_content)
         private val journalDate = itemView?.findViewById<TextView>(R.id.tv_list_posting_date)
